@@ -1,0 +1,13 @@
+﻿@Model SocialMediaSat.Models.TweetListModel
+
+
+@foreach (var item in Model.TweetsList)
+{
+    <p>@item.Text</p>
+    <p>@item.Likes</p>
+    <p>@item.Retweets</p>
+}
+
+
+<h2>TweetsList</h2>
+
