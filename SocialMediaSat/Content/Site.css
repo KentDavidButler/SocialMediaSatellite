@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #2C3531;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,43 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+input[type=submit], input[type=submit]:hover {
+    position:relative; 
+    left:-6px;
+    border:1px solid #adc5cf;
+    background: #e4f1f9; /* Old browsers */
+    background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
+    background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
+    color:#7da2aa;
+    cursor: pointer;
+}
+
+#SearchParent {
+    /*margin: 0 auto;*/
+    padding: 0% 5%;
+    background: #116466;
+    display: flex;
+}
+
+#SearchBox {
+    /*min-width: 350px;*/
+    margin: 3% 3%;
+    padding: 2% 2%;
+    border-radius: 25px;
+    background: #D1E8E2;
+    flex-grow: 1;
+}
+
+#SearchInfo {
+    margin: 3% 3%;
+    padding: 2% 2%;
+    border-radius: 25px;
+    background: #D1E8E2;
+    flex-grow: 1;
 }

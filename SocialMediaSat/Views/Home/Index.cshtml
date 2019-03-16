@@ -1,28 +1,24 @@
-﻿@{
-    ViewBag.Title = "TweetForm";
-}
+﻿@{ ViewBag.Title = "TweetForm";}
+<div id="SearchParent">
 
-<div class="Row ">
-    <div class=" col-md-6">
-        <div>
-            <h4>Please Enter Your Tweet Here</h4>
-        </div>
-        <div class="form-group">
+    <div id="SearchBox">
+        <h4>Please Enter Your Tweet Here</h4>
 
-            @* Gathering the user input *@
-
-            @using (@Html.BeginForm("Create", "Home", FormMethod.Post))
-            {
-                <input type="text" name="text" />
-                <input type="submit" />
-            }
-
-        </div>
+        @using (@Html.BeginForm("Create", "Home", FormMethod.Post))
+        {
+                <span>
+                    <input type="text" name="text" maxlength="15" input pattern="^[A-Za-z0-9_]{1,15}$" />
+                    <input type="submit">
+                </span>
+        }
     </div>
+
+    <div id="SearchInfo">
+        <h4>Welcome to SMS!</h4>
+        <p>Search your favorite Twitter Handle to see how they are performing!</p>
+        <p>Type in any Handle by providing an alphanumeric string and underscores only.</p>
+        <p>Also, all handles are 15 characters or less</p>
+    </div>
+
 </div>
 
-
-
-<button type="button">
-    @Html.ActionLink("Home", "Index", "Home")
-</button>

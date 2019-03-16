@@ -60,9 +60,9 @@ namespace SocialMediaSat.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Analytics()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Analytics page!! what up!";
 
             return View();
         }
