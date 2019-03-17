@@ -14,8 +14,7 @@ namespace SocialMediaSat.Controllers
         //declare a Twitter object to use inside of actionresults - gives auth 
         public Twitter twitter = new Twitter
         {
-            OAuthConsumerKey = "ZKQO3mOrtZSvgD0YPDnyZ4iOf",
-            OAuthConsumerSecret = "NNvgVh8sFBEroWqk3gPF775hTQ3mNGtBNQhdrXEX3MIDiub39C"
+
         };
         
         //taking user input
@@ -55,14 +54,14 @@ namespace SocialMediaSat.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Social Media Satillite";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Analytics()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Analytics page!! what up!";
 
             return View();
         }
