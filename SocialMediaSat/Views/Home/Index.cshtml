@@ -2,14 +2,14 @@
 <div id="SearchParent">
 
     <div id="SearchBox">
-        <h4>Please Enter Your Tweet Here</h4>
+        <h4>Enter Twitter Handle</h4>
 
         @using (@Html.BeginForm("Create", "Home", FormMethod.Post))
         {
-                <span>
-                    <input type="text" name="text" maxlength="15" input pattern="^[A-Za-z0-9_]{1,15}$" />
-                    <input type="submit">
-                </span>
+
+            <input type="text" name="text" maxlength="15" input pattern="^[A-Za-z0-9_]{1,15}$" />
+            <input type="submit">
+
         }
     </div>
 
