@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SocialMediaSat.BusinessLogic;
 using SocialMediaSat.Models;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,7 @@ namespace SocialMediaSat.Controllers
         //declare a Twitter object to use inside of actionresults - gives auth 
         public Twitter twitter = new Twitter
         {
-            OAuthConsumerKey = "ZKQO3mOrtZSvgD0YPDnyZ4iOf",
-            OAuthConsumerSecret = "NNvgVh8sFBEroWqk3gPF775hTQ3mNGtBNQhdrXEX3MIDiub39C"
+
         };
         
         //taking user input
@@ -37,7 +37,43 @@ namespace SocialMediaSat.Controllers
                 TweetsList = TweeitsList
             };
 
+            Session["TweetObject"] = model;
             return View("TweetsList", model);
+        }
+
+        [HttpGet]
+        public ActionResult Messages(string Likes, string Retweets, string Tweet)
+        {
+            var TweetModel = Session["TweetObject"] as TweetListModel;
+            int likes = int.Parse(Likes);
+            int retweets = int.Parse(Retweets);
+            if (likes <= 100 && likes > 0 || retweets <= 50 && retweets > 0)
+            {
+                string tempMessage = MessageLogic.Messages1();
+                ViewBag.Like = tempMessage;
+            }
+            else if (likes > 100 && likes < 250 || retweets <= 125 && retweets > 50)
+            {
+                string tempMessage = MessageLogic.Messages2();
+                ViewBag.Like = tempMessage;
+            }
+            else if (likes > 250 && likes < 750 || retweets <= 375 && retweets > 125)
+            {
+                string tempMessage = MessageLogic.Messages3();
+                ViewBag.Like = tempMessage;
+            }
+            else if (likes > 750 && likes < 1000 || retweets <= 500 && retweets > 375)
+            {
+                string tempMessage = MessageLogic.Messages4();
+                ViewBag.Like = tempMessage;
+            }
+            else if (likes > 1000 || retweets > 500)
+            {
+                string tempMessage = MessageLogic.Messages5();
+                ViewBag.Like = tempMessage;
+            }
+            ViewBag.Tweet = Tweet;
+            return View("TweetsList", TweetModel);
         }
 
         private List<TwitObject> MapResultToTweetList(string result)
@@ -47,7 +83,7 @@ namespace SocialMediaSat.Controllers
 
         public ActionResult TweetsList(List<TwitObject>TweetsList)
         {
-            //List<TwitObject> TweetsList = twitter.GetSpecificUserPost(text).Result;
+
             ViewBag.tweetsList = TweetsList;
             return View();
         }
