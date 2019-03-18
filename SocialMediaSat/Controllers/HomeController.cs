@@ -3,6 +3,7 @@ using SocialMediaSat.BusinessLogic;
 using SocialMediaSat.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,7 +16,8 @@ namespace SocialMediaSat.Controllers
         //declare a Twitter object to use inside of actionresults - gives auth 
         public Twitter twitter = new Twitter
         {
-
+            OAuthConsumerKey = ConfigurationManager.AppSettings["OAuthConsumerKey"],
+            OAuthConsumerSecret = ConfigurationManager.AppSettings["OAuthConsumerSecret"]
         };
         
         //taking user input
