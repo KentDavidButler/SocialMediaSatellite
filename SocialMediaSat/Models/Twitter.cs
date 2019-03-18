@@ -21,7 +21,7 @@ namespace SocialMediaSat
                 accessToken = await GetAccessToken();
             }
 
-            var requestUserTimeline = new HttpRequestMessage(HttpMethod.Get, string.Format("https://api.twitter.com/1.1/statuses/user_timeline.json?count={0}&screen_name={1}&trim_user=1&exclude_replies=1", count, userName));
+            var requestUserTimeline = new HttpRequestMessage(HttpMethod.Get, string.Format("https://api.twitter.com/1.1/statuses/user_timeline.json?count={0}&screen_name={1}&trim_user=1", count, userName));
             requestUserTimeline.Headers.Add("Authorization", "Bearer " + accessToken);
             var httpClient = new HttpClient();
             HttpResponseMessage responseUserTimeLine = httpClient.SendAsync(requestUserTimeline).Result;
