@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
+//get tweets from 
 namespace SocialMediaSat.Controllers
 {
     public class HomeController : Controller
@@ -38,6 +39,27 @@ namespace SocialMediaSat.Controllers
             {
                 TweetsList = TweeitsList
             };
+
+            Session["TweetObject"] = model;
+            return View("TweetsList", model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateTrend(string text)
+        {
+            //getting handel to compare
+            int count = 1;
+            var result = twitter.GetSpecificUserPost(text, count).Result;
+            List<TwitObject> TweeitsList = MapResultToTweetList(result);
+            var model = new TweetListModel
+            {
+                TweetsList = TweeitsList
+            };
+            //get trending tags!
+            var trendingResult = twitter.GetDetroitTrends().Result;
+            List<string> trendsList = MapResultToTrendingList(trendingResult);
+
+            //compare twitter handle hastags to trending hash tags.
 
             Session["TweetObject"] = model;
             return View("TweetsList", model);
@@ -81,6 +103,11 @@ namespace SocialMediaSat.Controllers
         private List<TwitObject> MapResultToTweetList(string result)
         {
             return JsonConvert.DeserializeObject<List<TwitObject>>(result);
+        }
+
+        private List<string> MapResultToTrendingList(string result)
+        {
+            return JsonConvert.DeserializeObject<List<string>>(result);
         }
 
         public ActionResult TweetsList(List<TwitObject>TweetsList)
