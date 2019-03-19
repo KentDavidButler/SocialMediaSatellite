@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SocialMediaSat.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,10 @@ namespace SocialMediaSat
         public string Likes { get; set; }
         [JsonProperty("retweet_count")]
         public string Retweets { get; set; }
+        [JsonProperty("entities")]
+        public EntityModel Entities { get; set; }
+
+
         public TwitObject(string text, string likes)
         {
             this.Text = text;
@@ -46,8 +51,7 @@ namespace SocialMediaSat
         }
         public TwitObject()
         {
-            this.Text = "***Something Went Wrong***";
-            this.Likes = "-1";
+
         }
         override public string ToString()
         {

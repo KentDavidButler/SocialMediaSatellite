@@ -13,6 +13,21 @@ namespace SocialMediaSat
     {
         public string OAuthConsumerSecret { get; set; }
         public string OAuthConsumerKey { get; set; }
+        //
+
+        public async Task<string> GetDetroitTrends(string accessToken = null)
+        {
+            if (accessToken == null)
+            {
+                accessToken = await GetAccessToken();
+            }
+
+            var requestUserTimeline = new HttpRequestMessage(HttpMethod.Get, string.Format("https://api.twitter.com/1.1/trends/place.json?id=2391585"));
+            requestUserTimeline.Headers.Add("Authorization", "Bearer " + accessToken);
+            var httpClient = new HttpClient();
+            HttpResponseMessage responseUserTimeLine = httpClient.SendAsync(requestUserTimeline).Result;
+            return responseUserTimeLine.Content.ReadAsStringAsync().Result;
+        }
 
         public async Task<string> GetSpecificUserPost(string userName, int count, string accessToken = null)
         {
