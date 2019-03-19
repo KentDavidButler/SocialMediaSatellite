@@ -40,6 +40,7 @@ namespace SocialMediaSat.Controllers
                 TweetsList = TweeitsList
             };
 
+            ViewBag.Handle = text;
             Session["TweetObject"] = model;
             return View("TweetsList", model);
         }

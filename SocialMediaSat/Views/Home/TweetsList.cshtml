@@ -32,7 +32,7 @@
 
 @if (!(Model == null))
 {
-    <h2 style="color:#FFCB9A">TweetsList</h2>
+    <h2 style="color:#FFCB9A">TweetsList for @ViewBag.Handle</h2>
     <div id="ReturnParent">
         @for (int i = 0; i < ((IEnumerable<dynamic>)Model.TweetsList).Count(); i++)
         {
@@ -45,9 +45,21 @@
                     <input type="hidden" name="Tweet" value="@Model.TweetsList[i].Text" />
                     <input type="hidden" name="Likes" value="@Model.TweetsList[i].Likes" />
                     <input type="hidden" name="Retweets" value="@Model.TweetsList[i].Retweets" />
-                    <input type="submit" />
+                    <input type="submit" value="Analyze Likes"/>
                     <p></p>
                 </form>
+
+                @if (Model.TweetsList[i].Entities.Hashtags.Count != 0)
+                {
+                    <form action="/Home/Compare/" method="get">
+                        <input type="hidden" name="Tweet" value="@Model.TweetsList[i].Text" />
+                        <input type="hidden" name="Likes" value="@Model.TweetsList[i].Likes" />
+                        <input type="hidden" name="Retweets" value="@Model.TweetsList[i].Retweets" />
+                        <input type="hidden" name="Hashtags" value="@Model.TweetsList[i].Entities" />
+                        <input type="submit" value="Compare Trending" />
+                        <p></p>
+                    </form>
+                    }
             </div>
             if (i % 4 == 0)
             {<br />}
