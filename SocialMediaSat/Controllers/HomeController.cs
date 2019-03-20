@@ -26,7 +26,6 @@ namespace SocialMediaSat.Controllers
             return View();
         }
 
-        //passing the user input called text, then place in viewbag (using foreach loop) 
         //Method to take (text) from the user input and generate a list - display list in our view bag
         [HttpPost]
         public ActionResult Create(string text)
@@ -87,6 +86,18 @@ namespace SocialMediaSat.Controllers
         {
 
             ViewBag.tweetsList = TweetsList;
+            return View();
+        }
+
+        private List<TrendList> MapResultToTrendList(string result)
+        {
+            return JsonConvert.DeserializeObject<List<TrendList>>(result);
+        }
+
+        public ActionResult Trends(List<TrendList> Trends)
+        {
+
+            ViewBag.trendList = Trends;
             return View();
         }
 

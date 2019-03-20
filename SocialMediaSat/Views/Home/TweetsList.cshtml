@@ -23,11 +23,7 @@
             <p>For your Tweet: </p> @ViewBag.Tweet
             <p>Your Likes are :</p> @ViewBag.Like
         }
-
-
     </div>
-
-
 </div>
 
 @if (!(Model == null))
@@ -41,6 +37,7 @@
             <p>Status: @Model.TweetsList[i].Text</p>
             <p>Likes: @Model.TweetsList[i].Likes</p>
             <p>Retweets: @Model.TweetsList[i].Retweets</p>
+            <p>Hashtags:  @Model.TweetsList[i].Entities.HashTagsDisplay</p>
             <input type="hidden" name="Tweet" value="@Model.TweetsList[i].Text" />
             <input type="hidden" name="Likes" value="@Model.TweetsList[i].Likes" />
             <input type="hidden" name="Retweets" value="@Model.TweetsList[i].Retweets" />

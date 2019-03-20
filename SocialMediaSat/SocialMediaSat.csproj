@@ -140,6 +140,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntityModel.cs" />
+    <Compile Include="Models\HashtagModel.cs" />
+    <Compile Include="Models\TrendList.cs" />
+    <Compile Include="Models\TrendsModel.cs" />
     <Compile Include="Models\TweetListModel.cs" />
     <Compile Include="Models\TwitObject.cs" />
     <Compile Include="Models\Twitter.cs" />
@@ -183,6 +187,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\TweetsList.cshtml" />
     <Content Include="Views\Home\Analytics.cshtml" />
+    <Content Include="Views\Home\Trends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
